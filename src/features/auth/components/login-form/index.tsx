@@ -27,6 +27,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import Image from "next/image";
 
 const loginSchema = z.object({
   email: z.email("Please enter a valid email"),
@@ -81,6 +82,12 @@ export function LoginForm() {
                     type="button"
                     disabled={isPending}
                   >
+                    <Image 
+                      src="/github.svg" 
+                      width={20} 
+                      height={20} 
+                      alt="Github" 
+                    />
                     Continue with Github
                   </Button>
 
@@ -90,6 +97,12 @@ export function LoginForm() {
                     type="button"
                     disabled={isPending}
                   >
+                    <Image 
+                      src="/google.svg" 
+                      width={20} 
+                      height={20} 
+                      alt="Google" 
+                    />
                     Continue with Google
                   </Button>
                 </div>
