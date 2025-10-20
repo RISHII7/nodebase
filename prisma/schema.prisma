@@ -74,4 +74,7 @@ model Verification {
   @@map("verification")
 }
 
-// 1:43:27
+model Workflow {
+  id String @id @default(cuid())
+  name String
+}
