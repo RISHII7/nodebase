@@ -1,11 +1,11 @@
-import 'server-only'; // <-- ensure this file cannot be imported from the client
+import "server-only"; // <-- ensure this file cannot be imported from the client
 
-import { cache } from 'react';
-import { createTRPCOptionsProxy } from '@trpc/tanstack-react-query';
+import { createTRPCOptionsProxy } from "@trpc/tanstack-react-query";
+import { cache } from "react";
 
-import { createTRPCContext } from '@/trpc/init';
-import { appRouter } from '@/trpc/routers/_app';
-import { makeQueryClient } from '@/trpc/query-client';
+import { createTRPCContext } from "@/trpc/init";
+import { makeQueryClient } from "@/trpc/query-client";
+import { appRouter } from "@/trpc/routers/_app";
 // IMPORTANT: Create a stable getter for the query client that
 //            will return the same client during the same request.
 
