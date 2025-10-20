@@ -27,6 +27,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import Image from "next/image";
 
 const registerSchema = z
   .object({
@@ -54,21 +55,22 @@ export function RegisterForm() {
   });
 
   const onSubmit = async (values: RegisterFormValues) => {
-    await authClient.signUp.email({
-      name: values.email,
-      email: values.email,
-      password: values.password,
-      callbackURL: "/",
-    },
-    {
-      onSuccess: () => {
-        router.push("/");
+    await authClient.signUp.email(
+      {
+        name: values.email,
+        email: values.email,
+        password: values.password,
+        callbackURL: "/",
       },
-      onError: (ctx) => {
-        toast.error(ctx.error.message)
+      {
+        onSuccess: () => {
+          router.push("/");
+        },
+        onError: (ctx) => {
+          toast.error(ctx.error.message);
+        },
       }
-    }
-  )
+    );
   };
 
   const isPending = form.formState.isSubmitting;
@@ -91,6 +93,12 @@ export function RegisterForm() {
                     type="button"
                     disabled={isPending}
                   >
+                    <Image
+                      src="/github.svg"
+                      width={20}
+                      height={20}
+                      alt="Github"
+                    />
                     Continue with Github
                   </Button>
 
@@ -100,6 +108,12 @@ export function RegisterForm() {
                     type="button"
                     disabled={isPending}
                   >
+                    <Image
+                      src="/google.svg"
+                      width={20}
+                      height={20}
+                      alt="Google"
+                    />
                     Continue with Google
                   </Button>
                 </div>
