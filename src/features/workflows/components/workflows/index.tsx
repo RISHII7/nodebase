@@ -1,15 +1,21 @@
 "use client"
 
+import { EntityList } from "@/components/entity-components/entity-list";
+
 import { useSuspenseWorkflows } from "@/features/workflows/hooks/use-workflows";
+import { WorkflowItem } from "@/features/workflows/components/workflows/workflow-item";
+import { WorkflowsEmpty } from "@/features/workflows/components/workflows/workflows-empty";
 
 export const WorkflowsList = () => {
   const workflows = useSuspenseWorkflows();
 
   return (
-    <div className="flex flex-1 justify-center items-center">
-      <p>
-        {JSON.stringify(workflows.data, null, 2)}
-      </p>
-    </div>
-);
+    <EntityList 
+      items={workflows.data.items}
+      getKey={(workflow) => workflow.id}
+      renderItem={(workflow) => <WorkflowItem data={workflow} />}
+      emptyView={<WorkflowsEmpty />}
+    />
+  )
 };
+

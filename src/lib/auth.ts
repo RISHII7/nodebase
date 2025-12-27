@@ -29,7 +29,6 @@ export const auth = betterAuth({
           authenticatedUsersOnly: true,
         }),
         portal(),
-        // 5:22:38
       ]
     })
   ]
