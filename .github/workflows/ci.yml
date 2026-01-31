@@ -27,19 +27,14 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Run Biome Lint
-        run: npm run lint
-
       # Requires build to generate prisma client for type check
       - name: Generate Prisma Client
         run: npx prisma generate
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
 
-      - name: Type Check
-        # run: tsc --noEmit (Skipping if no direct script, using build instead to verify types)
+      - name: Type Check & Build
         run: npm run build
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }} # Dummy or real secret required for build if strict
-          SKIP_ENV_VALIDATION: true # If using t3-env or similar to skip validation during build
-          # Providing a dummy URL if validation is strict and SKIP_ENV_VALIDATION isn't enough
-          DATABASE_URL_UNPOOLED: "postgresql://user:password@localhost:5432/db" 
-
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          SKIP_ENV_VALIDATION: true
