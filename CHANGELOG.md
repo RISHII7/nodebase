@@ -1,3 +1,13 @@
+## [1.1.0](https://github.com/RISHII7/nodebase/compare/v1.0.0...v1.1.0) (2026-01-31)
+
+### ✨ Features
+
+* implement node selector and trigger system ([40659d6](https://github.com/RISHII7/nodebase/commit/40659d6feeec3791b45aff40ad4dec91420da80b))
+
+### 👷 Continuous Integration
+
+* upgrade release configuration to enterprise standards ([a46930d](https://github.com/RISHII7/nodebase/commit/a46930d413f8e1033da51027bcbf32ea84e3a0e1))
+
 # 1.0.0 (2026-01-31)
 
 
