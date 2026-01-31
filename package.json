@@ -94,6 +94,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "conventional-changelog-conventionalcommits": "^9.1.0",
     "dotenv": "^17.2.3",
     "inngest-cli": "^1.12.1",
     "mprocs": "^0.7.3",
