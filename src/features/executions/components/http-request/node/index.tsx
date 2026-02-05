@@ -23,6 +23,8 @@ export const HttpRequestNode = memo(
             ? `${nodeData.method || "GET"}: ${nodeData.endpoint}`
             : "Not configured";
 
+        const nodeStatus = "error"
+
         return (
             <>
                 <BaseExecutionNode
@@ -31,6 +33,7 @@ export const HttpRequestNode = memo(
                     icon={GlobeIcon}
                     name="HTTP Module"
                     description={description}
+                    status={nodeStatus}
                     onSettings={() => { }}
                     onDoubleClick={() => { }}
                 />
