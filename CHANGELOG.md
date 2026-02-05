@@ -1,3 +1,9 @@
+## [1.2.1](https://github.com/RISHII7/nodebase/compare/v1.2.0...v1.2.1) (2026-02-05)
+
+### 📚 Documentation
+
+* add comprehensive README and env example ([d81aaa2](https://github.com/RISHII7/nodebase/commit/d81aaa2dfbd465321c75aebf63a7de04b88ba036))
+
 ## [1.2.0](https://github.com/RISHII7/nodebase/compare/v1.1.0...v1.2.0) (2026-02-05)
 
 ### ✨ Features
