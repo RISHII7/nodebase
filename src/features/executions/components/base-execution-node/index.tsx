@@ -4,7 +4,7 @@ import Image from "next/image";
 import type { LucideIcon } from "lucide-react";
 import { memo, type ReactNode } from "react";
 
-import { NodeProps, Position } from "@xyflow/react";
+import { NodeProps, Position, useReactFlow } from "@xyflow/react";
 
 import { WorkflowNode } from "@/components/workflow-node";
 import { BaseHandle } from "@/components/react-flow/base-handle";
@@ -30,10 +30,22 @@ export const BaseExecutionNode = memo(
         onSettings,
         onDoubleClick,
     }: BaseExecutionNodeProps) => {
-        // TODO: Implement delete functionality
-        const handleDelete = () => {
+        const { setNodes, setEdges } = useReactFlow();
 
-        }
+        const handleDelete = () => {
+            setNodes((currentNodes) => {
+                const updateNodes = currentNodes.filter((node) => node.id !== id);
+                return updateNodes;
+            });
+
+            setEdges((currentEdges) => {
+                const updateEdges = currentEdges.filter(
+                    (edge) => edge.source !== id && edge.target !== id
+                );
+                return updateEdges;
+            });
+        };
+
 
         return (
             <WorkflowNode
