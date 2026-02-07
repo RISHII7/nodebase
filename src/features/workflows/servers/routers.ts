@@ -1,6 +1,6 @@
 import z from "zod";
 import { generateSlug } from "random-word-slugs";
-import type { Node, Edge } from "@xyflow/react"
+import type { Node, Edge } from "@xyflow/react";
 import prisma from "@/lib/db";
 import { PAGINATION } from "@/config/constants";
 import {
@@ -10,8 +10,26 @@ import {
 } from "@/trpc/init";
 
 import { NodeType } from "@/generated/prisma";
+import { inngest } from "@/inngest/client";
 
 export const workflowsRouter = createTRPCRouter({
+  execute: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .mutation(async ({ input, ctx }) => {
+      const workflow = await prisma.workflow.findUniqueOrThrow({
+        where: {
+          id: input.id,
+          userId: ctx.auth.user.id,
+        },
+      });
+
+      await inngest.send({
+        name: "workflows/execute.workflow",
+        data: { workflowId: input.id },
+      });
+
+      return workflow;
+    }),
   create: premiumProcedure.mutation(({ ctx }) => {
     return prisma.workflow.create({
       data: {
@@ -20,11 +38,11 @@ export const workflowsRouter = createTRPCRouter({
         nodes: {
           create: {
             type: NodeType.INITIAL,
-            position:{
+            position: {
               x: 0,
               y: 0,
             },
-            name: NodeType.INITIAL
+            name: NodeType.INITIAL,
           },
         },
       },
@@ -44,7 +62,7 @@ export const workflowsRouter = createTRPCRouter({
 
   update: protectedProcedure
     .input(
-      z.object({ 
+      z.object({
         id: z.string(),
         nodes: z.array(
           z.object({
@@ -65,16 +83,16 @@ export const workflowsRouter = createTRPCRouter({
             targetHandle: z.string().nullish(),
           }),
         ),
-      })
+      }),
     )
-    .mutation(async({ ctx, input }) => {
+    .mutation(async ({ ctx, input }) => {
       const { id, nodes, edges } = input;
-      
+
       const workflow = await prisma.workflow.findUniqueOrThrow({
         where: {
           id,
-          userId: ctx.auth.user.id
-        }
+          userId: ctx.auth.user.id,
+        },
       });
 
       // Transaction to ensure consistency
@@ -83,7 +101,7 @@ export const workflowsRouter = createTRPCRouter({
         await tx.node.deleteMany({
           where: {
             workflowId: id,
-          }
+          },
         });
 
         // Create nodes
@@ -145,7 +163,7 @@ export const workflowsRouter = createTRPCRouter({
           id: input.id,
           userId: ctx.auth.user.id,
         },
-        include: { nodes: true, connections: true }
+        include: { nodes: true, connections: true },
       });
 
       // TRANSFORM SERVER NODES TO REACT-FLOW COMPATIBLE NODES
@@ -170,8 +188,7 @@ export const workflowsRouter = createTRPCRouter({
         name: workflow.name,
         nodes,
         edges,
-      }
-
+      };
     }),
 
   getMany: protectedProcedure
@@ -184,7 +201,7 @@ export const workflowsRouter = createTRPCRouter({
           .max(PAGINATION.MAX_PAGE_SIZE)
           .default(PAGINATION.DEFAULT_PAGE_SIZE),
         search: z.string().default(""),
-      })
+      }),
     )
     .query(async ({ ctx, input }) => {
       const { page, pageSize, search } = input;
@@ -209,8 +226,8 @@ export const workflowsRouter = createTRPCRouter({
             userId: ctx.auth.user.id,
             name: {
               contains: search,
-              mode: "insensitive"
-            }
+              mode: "insensitive",
+            },
           },
         }),
       ]);

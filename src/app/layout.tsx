@@ -1,6 +1,6 @@
 import { Provider } from "jotai";
 import type { Metadata } from "next";
-import { NuqsAdapter } from 'nuqs/adapters/next/app';
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { Geist, Geist_Mono } from "next/font/google";
 
 import "./globals.css";
@@ -20,11 +20,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nodebase",
-  description: "",
+  title: "NodeBase",
+  description:
+    "A powerful, modern, and modular AI automation platform built with Next.js 15, tRPC, Prisma, and Tailwind CSS 4.",
   icons: {
-    icon: './logo.svg'
-  }
+    icon: "/logo.svg",
+  },
 };
 
 export default function RootLayout({
