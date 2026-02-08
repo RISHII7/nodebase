@@ -12,6 +12,7 @@ import {
 } from "@/features/executions/components/http-request/dialog";
 
 type HttpRequestNodeData = {
+  variableName?: string;
   endpoint?: string;
   method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
   body?: string;

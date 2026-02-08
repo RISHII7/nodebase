@@ -4,6 +4,7 @@ import ky, { type Options as KyOptions } from "ky";
 import type { NodeExecutor } from "@/features/executions/types";
 
 type HttpRequestData = {
+  variableName?: string;
   endpoint?: string;
   method?: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
   body?: string;
@@ -21,6 +22,13 @@ export const httpRequestExecutor: NodeExecutor<HttpRequestData> = async ({
     // TODO: Publish "error" state for http request
     throw new NonRetriableError(
       "HTTP Request node: Endpoint is not configured",
+    );
+  }
+
+  if (!data.variableName) {
+    // TODO: Publish "error" state for http request
+    throw new NonRetriableError(
+      "HTTP Request node: Variable name is not configured",
     );
   }
 
@@ -43,13 +51,25 @@ export const httpRequestExecutor: NodeExecutor<HttpRequestData> = async ({
       ? await response.json()
       : await response.text();
 
-    return {
-      ...context,
+    const responsePayload = {
       httpResponse: {
         status: response.status,
         statusText: response.statusText,
         data: responseData,
       },
+    };
+
+    if (data.variableName) {
+      return {
+        ...context,
+        [data.variableName]: responsePayload,
+      };
+    }
+
+    // Fallback to direct httpResponse for backwards compatibilty
+    return {
+      ...context,
+      ...responsePayload,
     };
   });
 
