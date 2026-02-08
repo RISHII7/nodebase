@@ -32,6 +32,9 @@ export const httpRequestExecutor: NodeExecutor<HttpRequestData> = async ({
 
     if (["POST", "PUT", "PATCH"].includes(method)) {
       options.body = data.body;
+      options.headers = {
+        "Content-Type": "application/json",
+      };
     }
 
     const response = await ky(endpoint, options);
