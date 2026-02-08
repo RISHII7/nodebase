@@ -73,24 +73,24 @@ export const AppSidebar = () => {
             <SidebarGroupContent>
               <SidebarMenu>
                 {group.items.map((item) => (
-                <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton
-                    tooltip={item.title}
-                    isActive={
-                      item.url === "/"
-                        ? pathname === "/"
-                        : pathname.startsWith(item.url)
-                    }
-                    asChild
-                    className="gap-x-4 h-10 px-4"
-                  >
-                    <Link href={item.url} prefetch>
-                      <item.icon className="size-4" />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
-                </SidebarMenuItem>
-              ))}
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      tooltip={item.title}
+                      isActive={
+                        item.url === "/"
+                          ? pathname === "/"
+                          : pathname?.startsWith(item.url)
+                      }
+                      asChild
+                      className="gap-x-4 h-10 px-4"
+                    >
+                      <Link href={item.url} prefetch>
+                        <item.icon className="size-4" />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
               </SidebarMenu>
             </SidebarGroupContent>
           </SidebarGroup>
