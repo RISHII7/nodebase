@@ -7,6 +7,7 @@ import { inngest } from "@/inngest/client";
 import { topologicalSort } from "@/inngest/utils";
 import { httpRequestChannel } from "@/inngest/channels/http-request";
 import { manualTriggerChannel } from "@/inngest/channels/manual-trigger";
+import { googleFormTriggerChannel } from "@/inngest/channels/google-form-trigger";
 
 import { getExecutor } from "@/features/executions/lib/executor-registry";
 
@@ -14,7 +15,11 @@ export const executeWorkflow = inngest.createFunction(
   { id: "execute-workflow", retries: 0 /* TODO: Remove in Production */ },
   {
     event: "workflows/execute.workflow",
-    channels: [httpRequestChannel(), manualTriggerChannel()],
+    channels: [
+      httpRequestChannel(),
+      manualTriggerChannel(),
+      googleFormTriggerChannel(),
+    ],
   },
   async ({ event, step, publish }) => {
     const workflowId = event.data.workflowId;
