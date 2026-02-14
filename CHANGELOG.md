@@ -1,3 +1,15 @@
+## [1.3.0](https://github.com/RISHII7/nodebase/compare/v1.2.1...v1.3.0) (2026-02-08)
+
+### ✨ Features
+
+* **editor:** implement conditional workflow execution button ([517f669](https://github.com/RISHII7/nodebase/commit/517f669ad0516a721e7e4f5fbecaacb4108c79ee))
+* **editor:** optimize dialog props and data flow ([361c32e](https://github.com/RISHII7/nodebase/commit/361c32e066d7a9080c8215dcdb2b1e3fd61d2797))
+* **workflow:** Implement topological sort and executor registry ([481ed6a](https://github.com/RISHII7/nodebase/commit/481ed6a97ff80cb13dc127890ecfd99c52f87496))
+
+### 🐛 Bug Fixes
+
+* **build:** Add Pages Router compatibility files for Sentry ([0c72cc1](https://github.com/RISHII7/nodebase/commit/0c72cc1bc8939f38006745f223d58a4658c6f376))
+
 ## [1.2.1](https://github.com/RISHII7/nodebase/compare/v1.2.0...v1.2.1) (2026-02-05)
 
 ### 📚 Documentation
