@@ -1,3 +1,28 @@
+## [1.4.0](https://github.com/RISHII7/nodebase/compare/v1.3.0...v1.4.0) (2026-02-17)
+
+### ✨ Features
+
+* **execution:** Add Inngest Realtime support for Node Status ([8499dec](https://github.com/RISHII7/nodebase/commit/8499dec3c1189408b1a4caf79b0f54be1325242e))
+* **executor:** Implement Handlebars templating for dynamic HTTP requests ([a3fe5ce](https://github.com/RISHII7/nodebase/commit/a3fe5cefc3726dd1bb92043abba0358d82ca2e23))
+* **http-request:** Add variable name support to prevent key collisions ([14633df](https://github.com/RISHII7/nodebase/commit/14633dfbfc7ddcb2931f9dc9135c0bf37d782c50))
+* **triggers:** Implement Stripe Trigger & Realtime Events ([0e2fbd3](https://github.com/RISHII7/nodebase/commit/0e2fbd3176b6b4d637cfdbb93beaa7ade15b90f8))
+
+### 🐛 Bug Fixes
+
+* **build:** Remove conflicts with App Router by deleting src/pages ([b4d35ab](https://github.com/RISHII7/nodebase/commit/b4d35ab36942e88208deb8e0e7a923c59691e436))
+* **executions:** resolve invalid URL error and google form webhook payload structure ([b090080](https://github.com/RISHII7/nodebase/commit/b090080e4219b0d8b85a35dbad7f9db990fba84b))
+* **executions:** Resolve type mismatch in executor registry ([06420ac](https://github.com/RISHII7/nodebase/commit/06420ac8060ea9777b3bcc778d7233ca032fda82))
+* **executions:** Update HttpRequestData type definition in executor ([969498a](https://github.com/RISHII7/nodebase/commit/969498acab5655ea1b8dfd26583ec3aed15f6635))
+* **http-request:** Add Content-Type header for JSON mutation requests ([0cd5ace](https://github.com/RISHII7/nodebase/commit/0cd5ace71530b15b938f28ad90c857b2cf19710b))
+
+### ♻️ Code Refactoring
+
+* **http-request:** Enforce strict typing and remove legacy fallback ([7e86cbd](https://github.com/RISHII7/nodebase/commit/7e86cbd5948722eb27776882d387930a04070a2a))
+
+### 👷 Continuous Integration
+
+* Rename 'lint' job to 'build' to clarify no linting is performed ([f35863c](https://github.com/RISHII7/nodebase/commit/f35863c24a36678473f54d162cec9ce7151ce8a4))
+
 ## [1.3.0](https://github.com/RISHII7/nodebase/compare/v1.2.1...v1.3.0) (2026-02-08)
 
 ### ✨ Features
