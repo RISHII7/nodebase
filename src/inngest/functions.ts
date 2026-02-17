@@ -6,6 +6,7 @@ import { NodeType } from "@/generated/prisma";
 import { inngest } from "@/inngest/client";
 import { topologicalSort } from "@/inngest/utils";
 import { httpRequestChannel } from "@/inngest/channels/http-request";
+import { stripeTriggerChannel } from "@/inngest/channels/stripe-trigger";
 import { manualTriggerChannel } from "@/inngest/channels/manual-trigger";
 import { googleFormTriggerChannel } from "@/inngest/channels/google-form-trigger";
 
@@ -19,6 +20,7 @@ export const executeWorkflow = inngest.createFunction(
       httpRequestChannel(),
       manualTriggerChannel(),
       googleFormTriggerChannel(),
+      stripeTriggerChannel(),
     ],
   },
   async ({ event, step, publish }) => {
