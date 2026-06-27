@@ -5,6 +5,7 @@ import { NodeType } from "@/generated/prisma";
 
 import { inngest } from "@/inngest/client";
 import { topologicalSort } from "@/inngest/utils";
+import { slackChannel } from "@/inngest/channels/slack";
 import { geminiChannel } from "@/inngest/channels/gemini";
 import { discordChannel } from "@/inngest/channels/discord";
 import { httpRequestChannel } from "@/inngest/channels/http-request";
@@ -30,6 +31,7 @@ export const executeWorkflow = inngest.createFunction(
       openAiChannel(),
       anthropicChannel(),
       discordChannel(),
+      slackChannel(),
     ],
   },
   async ({ event, step, publish }) => {
