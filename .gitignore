@@ -41,7 +41,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-/src/generated/prisma
+# Prisma native engine binaries (platform-specific, generated at runtime)
+src/generated/prisma/*.node
+src/generated/prisma/*.node.tmp*
 
 # Sentry Config File
 .env.sentry-build-plugin
