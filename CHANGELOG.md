@@ -1,5 +1,19 @@
-## [1.5.0](https://github.com/RISHII7/nodebase/compare/v1.4.0...v1.5.0) (2026-06-27)
+## [1.6.0](https://github.com/RISHII7/nodebase/compare/v1.5.0...v1.6.0) (2026-06-27)
 
+### ✨ Features
+
+* **ai:** integrate dynamic user credentials into AI nodes ([6b4b6d7](https://github.com/RISHII7/nodebase/commit/6b4b6d7))
+* **api:** implement credentials router and integrate into trpc app router ([16fbed9](https://github.com/RISHII7/nodebase/commit/16fbed9))
+* **credentials:** add credential creation and details UI components ([efa1c94](https://github.com/RISHII7/nodebase/commit/efa1c94))
+* **credentials:** add hooks and params for credentials state management ([2cbbba2](https://github.com/RISHII7/nodebase/commit/2cbbba2))
+* **credentials:** implement server loader and prefetching for credentials page ([37b3005](https://github.com/RISHII7/nodebase/commit/37b3005))
+* **database:** introduce Credential model and relations ([b724c1c](https://github.com/RISHII7/nodebase/commit/b724c1c))
+
+### 🐛 Bug Fixes
+
+* **editor:** resolve react-flow hydration mismatch and inngest dependencies ([a15318c](https://github.com/RISHII7/nodebase/commit/a15318c))
+
+## [1.5.0](https://github.com/RISHII7/nodebase/compare/v1.4.0...v1.5.0) (2026-06-27)
 ### ✨ Features
 
 * **ai:** Implement comprehensive AI integration suite (Anthropic, Gemini, OpenAI) ([7af9af4](https://github.com/RISHII7/nodebase/commit/7af9af4f664a4d9600c9bae40be13231c0508039))
