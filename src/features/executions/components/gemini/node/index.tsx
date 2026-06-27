@@ -16,6 +16,7 @@ import { fetchGeminiRealtimeToken } from "@/features/executions/components/gemin
 
 type GeminiNodeData = {
   variableName?: string;
+  credentialId?: string;
   systemPrompt?: string;
   userPrompt?: string;
 };

@@ -1,13 +1,5 @@
 "use client";
 
-import z from "zod";
-import { useEffect } from "react";
-import { useForm } from "react-hook-form";
-
-import { zodResolver } from "@hookform/resolvers/zod";
-
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Dialog,
   DialogContent,
@@ -25,8 +17,23 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import { useCredentialsByType } from "@/features/credentials/hooks/use-credentials";
+import { CredentialType } from "@/generated/prisma";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import Image from "next/image";
 
 const formSchema = z.object({
   variableName: z
@@ -34,15 +41,16 @@ const formSchema = z.object({
     .min(1, { message: "Variable name is required" })
     .regex(/^[A-Za-z_$][A-Za-z0-9_$]*$/, {
       message:
-        "Variable name must start with a letter or underscore and can only contain letters, numbers and underscores",
+        "Variable name must start with a letter or underscore and container only letters, numbers, and underscores",
     }),
+  credentialId: z.string().min(1, "Credential is required"),
   systemPrompt: z.string().optional(),
-  userPrompt: z.string().min(1, { message: "User prompt is required" }),
+  userPrompt: z.string().min(1, "User prompt is required"),
 });
 
 export type OpenAiFormValues = z.infer<typeof formSchema>;
 
-interface OpenAiDialogProps {
+interface Props {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSubmit: (values: z.infer<typeof formSchema>) => void;
@@ -54,33 +62,38 @@ export const OpenAiDialog = ({
   onOpenChange,
   onSubmit,
   defaultValues = {},
-}: OpenAiDialogProps) => {
+}: Props) => {
+  const { data: credentials, isLoading: isLoadingCredentials } =
+    useCredentialsByType(CredentialType.OPENAI);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       variableName: defaultValues.variableName || "",
+      credentialId: defaultValues.credentialId || "",
       systemPrompt: defaultValues.systemPrompt || "",
       userPrompt: defaultValues.userPrompt || "",
     },
   });
-
-  const watchVariableName = form.watch("variableName") || "myOpenAI";
-
-  const handleSubmit = (values: z.infer<typeof formSchema>) => {
-    onSubmit(values);
-    onOpenChange(false);
-  };
 
   // Reset form values when dialog opens with new defaults
   useEffect(() => {
     if (open) {
       form.reset({
         variableName: defaultValues.variableName || "",
+        credentialId: defaultValues.credentialId || "",
         systemPrompt: defaultValues.systemPrompt || "",
         userPrompt: defaultValues.userPrompt || "",
       });
     }
   }, [open, defaultValues, form]);
+
+  const watchVariableName = form.watch("variableName") || "myOpenAi";
+
+  const handleSubmit = (values: z.infer<typeof formSchema>) => {
+    onSubmit(values);
+    onOpenChange(false);
+  };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -88,7 +101,7 @@ export const OpenAiDialog = ({
         <DialogHeader>
           <DialogTitle>OpenAI Configuration</DialogTitle>
           <DialogDescription>
-            Configure the AI model and prompts for the OpenAI node
+            Configure the AI model and prompts for this node.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -103,12 +116,49 @@ export const OpenAiDialog = ({
                 <FormItem>
                   <FormLabel>Variable Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="myOpenAI" {...field} />
+                    <Input placeholder="myOpenAi" {...field} />
                   </FormControl>
                   <FormDescription>
-                    Use this to reference the result in other nodes:{" "}
+                    Use this name to reference the result in other nodes:{" "}
                     {`{{${watchVariableName}.text}}`}
                   </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="credentialId"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>OpenAI Credential</FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                    disabled={isLoadingCredentials || !credentials?.length}
+                  >
+                    <FormControl>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="Select a credential" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {credentials?.map((credential) => (
+                        <SelectItem key={credential.id} value={credential.id}>
+                          <div className="flex items-center gap-2">
+                            <Image
+                              src="/openai.svg"
+                              alt="OpenAI"
+                              width={16}
+                              height={16}
+                            />
+                            {credential.name}
+                          </div>
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                   <FormMessage />
                 </FormItem>
               )}
@@ -128,14 +178,14 @@ export const OpenAiDialog = ({
                     />
                   </FormControl>
                   <FormDescription>
-                    Sets a behavior of the assistant. Use {"{{variables}}"} for
-                    simple values or {"{{json variable}}"} to stringify objects
+                    Sets the behavior of the assistant. Use {"{{variables}}"}{" "}
+                    for simple values or {"{{json variable}}"} to stringify
+                    objects
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
-
             <FormField
               control={form.control}
               name="userPrompt"
@@ -144,20 +194,19 @@ export const OpenAiDialog = ({
                   <FormLabel>User Prompt</FormLabel>
                   <FormControl>
                     <Textarea
-                      placeholder="Summarize this test: {{json.httpResponse.data}}"
+                      placeholder="Summarize this text: {{json httpResponse.data}}"
                       className="min-h-[120px] font-mono text-sm"
                       {...field}
                     />
                   </FormControl>
                   <FormDescription>
-                    The prompt send to the AI. Use {"{{variables}}"} for simple
-                    values or {"{{json variable}}"} to stringify objects
+                    The prompt to send to the AI. Use {"{{variables}}"} for
+                    simple values or {"{{json variable}}"} to stringify objects
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
             />
-
             <DialogFooter className="mt-4">
               <Button type="submit">Save</Button>
             </DialogFooter>
