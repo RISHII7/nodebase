@@ -1,3 +1,9 @@
+## [1.11.2](https://github.com/RISHII7/nodebase/compare/v1.11.1...v1.11.2) (2026-06-27)
+
+### 🐛 Bug Fixes
+
+* **prisma:** commit generated client and exclude platform-specific binaries ([1088175](https://github.com/RISHII7/nodebase/commit/1088175aa43db6d3229f42bb92e6e4759042cfba))
+
 ## [1.11.1](https://github.com/RISHII7/nodebase/compare/v1.11.0...v1.11.1) (2026-06-27)
 
 ### 🐛 Bug Fixes
