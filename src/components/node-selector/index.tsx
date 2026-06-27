@@ -73,6 +73,12 @@ const executionNodes: NodeTypeOption[] = [
     description: "Use Anthropic to generate content.",
     icon: "/anthropic.svg",
   },
+  {
+    type: NodeType.DISCORD,
+    label: "Discord",
+    description: "Send a message to Discord",
+    icon: "/discord.svg",
+  },
 ];
 
 interface NodeSelectorProps {

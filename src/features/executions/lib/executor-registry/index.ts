@@ -8,6 +8,7 @@ import { manualTriggerExecutor } from "@/features/triggers/components/manual-tri
 import { googleFormTriggerExecutor } from "@/features/triggers/components/google-form-trigger/executor";
 import { openAiExecutor } from "@/features/executions/components/openai/executor";
 import { anthropicExecutor } from "@/features/executions/components/anthropic/executor";
+import { discordExecutor } from "@/features/executions/components/discord/executor";
 
 export const executorRegistry: Record<NodeType, NodeExecutor> = {
   [NodeType.INITIAL]: manualTriggerExecutor,
@@ -18,7 +19,8 @@ export const executorRegistry: Record<NodeType, NodeExecutor> = {
   [NodeType.GEMINI]: geminiExecutor,
   [NodeType.OPENAI]: openAiExecutor,
   [NodeType.ANTHROPIC]: anthropicExecutor,
-  [NodeType.DISCORD]: geminiExecutor,
+  [NodeType.DISCORD]: discordExecutor,
+  [NodeType.SLACK]: discordExecutor,
 };
 
 export const getExecutor = (type: NodeType): NodeExecutor => {
