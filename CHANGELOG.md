@@ -1,3 +1,9 @@
+## [Unreleased]
+
+### ✨ Features
+
+* **ai:** Implement comprehensive AI integration suite (Anthropic, Gemini, OpenAI) ([7af9af4](https://github.com/RISHII7/nodebase/commit/7af9af4))
+
 ## [1.4.0](https://github.com/RISHII7/nodebase/compare/v1.3.0...v1.4.0) (2026-02-17)
 
 ### ✨ Features
