@@ -1,3 +1,9 @@
+## [1.5.1](https://github.com/RISHII7/nodebase/compare/v1.5.0...v1.5.1) (2026-06-27)
+
+### 📚 Documentation
+
+* **changelog:** update with recent ai features ([46fdbb9](https://github.com/RISHII7/nodebase/commit/46fdbb911281c3c1efeb3cfe0dfe1e9ab49f07da))
+
 ## [1.5.0](https://github.com/RISHII7/nodebase/compare/v1.4.0...v1.5.0) (2026-06-27)
 
 ### ✨ Features
