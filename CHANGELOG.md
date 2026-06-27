@@ -1,3 +1,13 @@
+## [1.11.0](https://github.com/RISHII7/nodebase/compare/v1.10.0...v1.11.0) (2026-06-27)
+
+### ✨ Features
+
+* **docker:** add GitHub Container Registry publishing pipeline ([64ec029](https://github.com/RISHII7/nodebase/commit/64ec0298d4d3ab966917aae281f376691a90c002))
+
+### 🐛 Bug Fixes
+
+* **encryption:** defer Cryptr instantiation to first use ([82cb0e7](https://github.com/RISHII7/nodebase/commit/82cb0e72b71fdddad24da1b5ca844a1292f9edeb))
+
 ## [1.10.0](https://github.com/RISHII7/nodebase/compare/v1.9.0...v1.10.0) (2026-06-27)
 
 ### ✨ Features
