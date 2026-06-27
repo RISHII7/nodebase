@@ -118,6 +118,7 @@ enum NodeType {
   OPENAI
   DISCORD
   ANTHROPIC
+  SLACK
 }
 
 model Node {
