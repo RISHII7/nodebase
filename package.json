@@ -1,6 +1,9 @@
 {
   "name": "nodebase",
-  "version": "1.9.0",
+  "version": "1.10.0",
+  "description": "AI workflow automation platform — visually compose, connect, and execute AI-powered workflows",
+  "author": "Rishikesh Palande <rishikesh.palande07@gmail.com>",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",

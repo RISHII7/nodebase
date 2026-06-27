@@ -1,3 +1,47 @@
+## [1.10.0](https://github.com/RISHII7/nodebase/compare/v1.9.0...v1.10.0) (2026-06-27)
+
+### ✨ Features
+
+* **auth:** implement Google and GitHub OAuth providers ([451fdf3](https://github.com/RISHII7/nodebase/commit/451fdf3))
+
+### 🐛 Bug Fixes
+
+* **env:** correct `GEMINI_API_KEY` variable name (was `GOOGLE_GENERATIVE_AI_API_KEY`), add missing `GITHUB_CLIENT_ID`, `GITHUB_CLIENT_SECRET`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `NGROK_URL`, `NEXT_PUBLIC_APP_URL`
+* **inngest:** enable automatic retries in production (3 retries) — was hardcoded to 0
+
+### 📚 Documentation
+
+* **readme:** rewrite root README with architecture diagram, node types reference, tech stack table, and 5-step quickstart
+* **architecture:** add full system architecture doc with C4 context diagram, container map, request lifecycle, execution flow, and realtime status flow
+* **database:** add complete database reference with ER diagram, all 9 model schemas, migration history, and index strategy
+* **api:** add full tRPC and REST API reference — all 16 procedures with input schemas, output shapes, auth levels, and examples
+* **node-types:** add deep-dive reference for all 10 node types with config schemas, executor logic, context I/O, and example JSON
+* **workflows:** add workflow system guide covering DAG model, execution engine, topological sort, context propagation, state machine, and error handling
+* **authentication:** add authentication guide covering Better Auth setup, email/password, GitHub/Google OAuth, session lifecycle, and client hooks
+* **credentials:** add credential management guide covering AES-256-GCM encryption, storage flow, runtime decryption, and security considerations
+* **subscriptions:** add Polar.sh integration guide covering checkout flow, subscription gates, `premiumProcedure`, and customer portal
+* **environment:** add complete environment variable reference — all 20 vars with type, required status, usage location, and generation commands
+* **deployment:** add Vercel deployment guide with environment setup, Neon database, OAuth app registration, Polar.sh config, Sentry setup, and CI/CD pipeline
+* **development:** add local development guide covering mprocs, Ngrok, Inngest dev server, Prisma Studio, Biome, and conventional commits
+* **monitoring:** add monitoring guide covering Sentry setup, Inngest Realtime channels, execution tracking, and observability strategy
+* **security-arch:** add security architecture guide covering encryption, CSRF, auth, RBAC, Zod validation, OWASP mitigations, and production hardening
+* **troubleshooting:** add troubleshooting playbook for common errors — database, auth, Inngest, executions, credentials, subscriptions
+* **webhooks:** add webhook integration guide for Stripe and Google Forms triggers with payload schemas and setup instructions
+* **adr-001:** add Architecture Decision Record — Next.js 15 App Router + tRPC over Express + REST
+* **adr-002:** add Architecture Decision Record — Better Auth over NextAuth/Clerk
+* **adr-003:** add Architecture Decision Record — Inngest over BullMQ/SQS/Temporal
+* **adr-004:** add Architecture Decision Record — Polar.sh over Stripe Billing/Paddle
+* **adr-005:** add Architecture Decision Record — Cryptr (AES-256-GCM) for credential encryption
+
+### ⚙️ Miscellaneous Chores
+
+* **community:** add MIT `LICENSE` and Contributor Covenant `CODE_OF_CONDUCT.md`
+* **community:** add `CONTRIBUTING.md` with commit conventions, PR guidelines, and code standards
+* **community:** add `SECURITY.md` with vulnerability reporting policy and supported versions
+* **package:** add `license`, `author`, and `description` fields to package.json
+
+---
+
 ## [1.9.0](https://github.com/RISHII7/nodebase/compare/v1.8.0...v1.9.0) (2026-06-27)
 
 ### ✨ Features
