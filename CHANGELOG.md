@@ -1,3 +1,13 @@
+## [1.8.0](https://github.com/RISHII7/nodebase/compare/v1.7.0...v1.8.0) (2026-06-27)
+
+### ✨ Features
+
+* **executions:** track execution runs in database
+* **executions:** add executions list and detail views
+* **executions:** add react hooks for execution data fetching
+* **executions:** add trpc routers and params for execution queries
+* **executions:** add Execution model to schema
+
 ## [1.7.0](https://github.com/RISHII7/nodebase/compare/v1.6.0...v1.7.0) (2026-06-27)
 
 ### ✨ Features
