@@ -1,3 +1,9 @@
+## [1.11.3](https://github.com/RISHII7/nodebase/compare/v1.11.2...v1.11.3) (2026-06-27)
+
+### 🐛 Bug Fixes
+
+* **build:** remove prisma generate from build script to use committed generated client ([c077017](https://github.com/RISHII7/nodebase/commit/c0770177e38427b54c776a7c47cfd5231a56dff2))
+
 ## [1.11.2](https://github.com/RISHII7/nodebase/compare/v1.11.1...v1.11.2) (2026-06-27)
 
 ### 🐛 Bug Fixes
