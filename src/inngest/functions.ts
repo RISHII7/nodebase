@@ -5,7 +5,11 @@ import { NodeType } from "@/generated/prisma";
 
 import { inngest } from "@/inngest/client";
 import { topologicalSort } from "@/inngest/utils";
+import { geminiChannel } from "@/inngest/channels/gemini";
 import { httpRequestChannel } from "@/inngest/channels/http-request";
+
+import { openAiChannel } from "@/inngest/channels/openai";
+import { anthropicChannel } from "@/inngest/channels/anthropic";
 import { stripeTriggerChannel } from "@/inngest/channels/stripe-trigger";
 import { manualTriggerChannel } from "@/inngest/channels/manual-trigger";
 import { googleFormTriggerChannel } from "@/inngest/channels/google-form-trigger";
@@ -21,6 +25,9 @@ export const executeWorkflow = inngest.createFunction(
       manualTriggerChannel(),
       googleFormTriggerChannel(),
       stripeTriggerChannel(),
+      geminiChannel(),
+      openAiChannel(),
+      anthropicChannel(),
     ],
   },
   async ({ event, step, publish }) => {
