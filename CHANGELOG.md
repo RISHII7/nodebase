@@ -2,6 +2,25 @@
 
 ### ✨ Features
 
+* **ai:** integrate dynamic user credentials into AI nodes ([6b4b6d7](https://github.com/RISHII7/nodebase/commit/6b4b6d793e718f12e612bdc73c6156dea1ae2eb8))
+* **api:** implement credentials router and integrate into trpc app router ([16fbed9](https://github.com/RISHII7/nodebase/commit/16fbed9d4e685da6614c78d2ea501ab355f486e9))
+* **credentials:** add credential creation and details UI components ([efa1c94](https://github.com/RISHII7/nodebase/commit/efa1c946688bf26f7ca5ab6afd73d0e21f19e6a5))
+* **credentials:** add hooks and params for credentials state management ([2cbbba2](https://github.com/RISHII7/nodebase/commit/2cbbba22919247095c7b8e48b4512efe666b3bce))
+* **credentials:** implement server loader and prefetching for credentials page ([37b3005](https://github.com/RISHII7/nodebase/commit/37b3005f9d04e3b46950b9bdcc7aa9ffaec1eacc))
+* **database:** introduce Credential model and relations ([b724c1c](https://github.com/RISHII7/nodebase/commit/b724c1cf4b5c7eab3b69532d354c3892a919c362))
+
+### 🐛 Bug Fixes
+
+* **editor:** resolve react-flow hydration mismatch and inngest dependencies ([a15318c](https://github.com/RISHII7/nodebase/commit/a15318c170a09015aded5d60004b83f5c471fdf6))
+
+### ⚙️ Miscellaneous Chores
+
+* **release:** 1.6.0 ([c42a2bc](https://github.com/RISHII7/nodebase/commit/c42a2bca04daee8583f840fcb25dbd3436d4ef5c))
+
+## [1.6.0](https://github.com/RISHII7/nodebase/compare/v1.5.1...v1.6.0) (2026-06-27)
+
+### ✨ Features
+
 * **ai:** integrate dynamic user credentials into AI nodes ([6b4b6d7](https://github.com/RISHII7/nodebase/commit/6b4b6d7))
 * **api:** implement credentials router and integrate into trpc app router ([16fbed9](https://github.com/RISHII7/nodebase/commit/16fbed9))
 * **credentials:** add credential creation and details UI components ([efa1c94](https://github.com/RISHII7/nodebase/commit/efa1c94))
