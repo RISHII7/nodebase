@@ -1,3 +1,9 @@
+## [1.9.0](https://github.com/RISHII7/nodebase/compare/v1.8.0...v1.9.0) (2026-06-27)
+
+### ✨ Features
+
+* **security:** implement credential encryption at rest
+
 ## [1.8.0](https://github.com/RISHII7/nodebase/compare/v1.7.0...v1.8.0) (2026-06-27)
 
 ### ✨ Features
