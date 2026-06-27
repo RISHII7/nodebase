@@ -1,3 +1,9 @@
+## [1.11.1](https://github.com/RISHII7/nodebase/compare/v1.11.0...v1.11.1) (2026-06-27)
+
+### 🐛 Bug Fixes
+
+* **docker:** set placeholder DATABASE_URL for Prisma 7 generate step ([a563201](https://github.com/RISHII7/nodebase/commit/a563201b531c96e1dc5c616c9ae3aaab721da74d))
+
 ## [1.11.0](https://github.com/RISHII7/nodebase/compare/v1.10.0...v1.11.0) (2026-06-27)
 
 ### ✨ Features
