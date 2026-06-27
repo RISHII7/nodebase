@@ -32,17 +32,17 @@ export const baseProcedure = t.procedure;
 export const protectedProcedure = baseProcedure.use(async ({ ctx, next }) => {
   const session = await auth.api.getSession({
     headers: await headers(),
-  })
+  });
 
   if (!session) {
     throw new TRPCError({
       code: "UNAUTHORIZED",
       message: "Unauthorized",
     });
-  };
+  }
 
   return next({
-    ctx: {...ctx, auth: session}
+    ctx: { ...ctx, auth: session },
   });
 });
 
@@ -52,16 +52,17 @@ export const premiumProcedure = protectedProcedure.use(
       externalId: ctx.auth.user.id,
     });
 
-    if (!customer.activeSubscriptions ||
+    if (
+      !customer.activeSubscriptions ||
       customer.activeSubscriptions.length === 0
     ) {
       throw new TRPCError({
         code: "FORBIDDEN",
-        message: "Active Subscription required"
+        message: "Active Subscription required",
       });
-    };
+    }
     return next({
-      ctx: { ...ctx, customer }
+      ctx: { ...ctx, customer },
     });
   },
 );

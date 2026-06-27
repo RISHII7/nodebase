@@ -13,26 +13,26 @@ import { WorkflowsLoading } from "@/features/workflows/components/workflows/work
 import { WorkflowsContainer } from "@/features/workflows/components/workflows/workflows-container";
 
 type Props = {
-    searchParams: Promise<SearchParams>;
+  searchParams: Promise<SearchParams>;
 };
 
 const Page = async ({ searchParams }: Props) => {
-    await requireAuth();
+  await requireAuth();
 
-    const params = await workflowsParamsLoader(searchParams);
-    prefetchWorkflows(params);
-    
-    return (
-        <WorkflowsContainer>
-            <HydrateClient>
-                <ErrorBoundary fallback={<WorkflowsError />}>
-                <Suspense fallback={<WorkflowsLoading />}>
-                    <WorkflowsList />
-                </Suspense>
-                </ErrorBoundary>
-            </HydrateClient>
-        </WorkflowsContainer>
-     );
+  const params = await workflowsParamsLoader(searchParams);
+  prefetchWorkflows(params);
+
+  return (
+    <WorkflowsContainer>
+      <HydrateClient>
+        <ErrorBoundary fallback={<WorkflowsError />}>
+          <Suspense fallback={<WorkflowsLoading />}>
+            <WorkflowsList />
+          </Suspense>
+        </ErrorBoundary>
+      </HydrateClient>
+    </WorkflowsContainer>
+  );
 };
- 
+
 export default Page;

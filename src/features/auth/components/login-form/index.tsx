@@ -48,18 +48,21 @@ export function LoginForm() {
   });
 
   const onSubmit = async (values: LoginFormValues) => {
-    await authClient.signIn.email({
-      email: values.email,
-      password: values.password,
-      callbackURL: "/"
-    }, {
-      onSuccess: () => {
-        router.push("/");
+    await authClient.signIn.email(
+      {
+        email: values.email,
+        password: values.password,
+        callbackURL: "/",
       },
-      onError: (ctx) => {
-        toast.error(ctx.error.message);
+      {
+        onSuccess: () => {
+          router.push("/");
+        },
+        onError: (ctx) => {
+          toast.error(ctx.error.message);
+        },
       },
-    });
+    );
   };
 
   const isPending = form.formState.isSubmitting;
@@ -82,11 +85,11 @@ export function LoginForm() {
                     type="button"
                     disabled={isPending}
                   >
-                    <Image 
-                      src="/github.svg" 
-                      width={20} 
-                      height={20} 
-                      alt="Github" 
+                    <Image
+                      src="/github.svg"
+                      width={20}
+                      height={20}
+                      alt="Github"
                     />
                     Continue with Github
                   </Button>
@@ -97,11 +100,11 @@ export function LoginForm() {
                     type="button"
                     disabled={isPending}
                   >
-                    <Image 
-                      src="/google.svg" 
-                      width={20} 
-                      height={20} 
-                      alt="Google" 
+                    <Image
+                      src="/google.svg"
+                      width={20}
+                      height={20}
+                      alt="Google"
                     />
                     Continue with Google
                   </Button>

@@ -6,7 +6,7 @@ interface UseEntitySearchProps<
   T extends {
     search: string;
     page: number;
-  }
+  },
 > {
   params: T;
   setParams: (params: T) => void;
@@ -17,7 +17,7 @@ export function useEntitySearch<
   T extends {
     search: string;
     page: number;
-  }
+  },
 >({ params, setParams, debounceMs = 500 }: UseEntitySearchProps<T>) {
   const [localSearch, setLocalSearch] = useState(params.search);
 

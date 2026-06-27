@@ -1,7 +1,5 @@
-import { ErrorView } from "@/components/entity-components/error-view"
+import { ErrorView } from "@/components/entity-components/error-view";
 
 export const EditorError = () => {
-    return (
-        <ErrorView message="Error loading editor.." />
-    )
-}
+  return <ErrorView message="Error loading editor.." />;
+};

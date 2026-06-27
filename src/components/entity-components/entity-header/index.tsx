@@ -29,31 +29,24 @@ export const EntityHeader = ({
       <div className="flex flex-col">
         <h1 className="text-lg md:text-xl font-semibold">{title}</h1>
         {description && (
-            <p className="text-xs md:text-sm text-muted-foreground">
-                {description}
-            </p>
+          <p className="text-xs md:text-sm text-muted-foreground">
+            {description}
+          </p>
         )}
       </div>
       {onNew && !newButtonHref && (
-        <Button 
-            disabled={isCreating || disabled}
-            size="sm"
-            onClick={onNew}
-        >
-            <PlusIcon className="size-4" />
-            {newButtonLabel}
+        <Button disabled={isCreating || disabled} size="sm" onClick={onNew}>
+          <PlusIcon className="size-4" />
+          {newButtonLabel}
         </Button>
       )}
 
       {newButtonHref && !onNew && (
-        <Button 
-            size="sm"
-            asChild
-        >
-            <Link href={newButtonHref} prefetch>
-                <PlusIcon className="size-4" />
-                {newButtonLabel}
-            </Link>
+        <Button size="sm" asChild>
+          <Link href={newButtonHref} prefetch>
+            <PlusIcon className="size-4" />
+            {newButtonLabel}
+          </Link>
         </Button>
       )}
     </div>

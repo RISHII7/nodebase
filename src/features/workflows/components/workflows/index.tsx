@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { EntityList } from "@/components/entity-components/entity-list";
 
@@ -10,12 +10,11 @@ export const WorkflowsList = () => {
   const workflows = useSuspenseWorkflows();
 
   return (
-    <EntityList 
+    <EntityList
       items={workflows.data.items}
       getKey={(workflow) => workflow.id}
       renderItem={(workflow) => <WorkflowItem data={workflow} />}
       emptyView={<WorkflowsEmpty />}
     />
-  )
+  );
 };
-

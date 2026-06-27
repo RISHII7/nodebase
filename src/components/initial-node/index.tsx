@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { memo, useState } from "react";
 import { PlusIcon } from "lucide-react";
@@ -9,22 +9,18 @@ import { WorkflowNode } from "../workflow-node";
 import { NodeSelector } from "../node-selector";
 
 export const InitialNode = memo((props: NodeProps) => {
-    const [selectorOpen, setSelectorOpen] = useState(false);
-    return (
-        <NodeSelector open={selectorOpen} onOpenChange={setSelectorOpen}>
-            <WorkflowNode showToolbar={false}>
-                <PlaceholderNode
-                    {...props}
-                    onClick={() => setSelectorOpen(true)}
-
-                >
-                    <div className="cursor-pointer flex items-center justify-center">
-                        <PlusIcon className="size-4" />
-                    </div>
-                </PlaceholderNode>
-            </WorkflowNode>
-        </NodeSelector>
-    )
+  const [selectorOpen, setSelectorOpen] = useState(false);
+  return (
+    <NodeSelector open={selectorOpen} onOpenChange={setSelectorOpen}>
+      <WorkflowNode showToolbar={false}>
+        <PlaceholderNode {...props} onClick={() => setSelectorOpen(true)}>
+          <div className="cursor-pointer flex items-center justify-center">
+            <PlusIcon className="size-4" />
+          </div>
+        </PlaceholderNode>
+      </WorkflowNode>
+    </NodeSelector>
+  );
 });
 
 InitialNode.displayName = "InitialNode";

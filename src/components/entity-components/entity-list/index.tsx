@@ -32,4 +32,4 @@ export function EntityList<T>({
       ))}
     </div>
   );
-};
+}

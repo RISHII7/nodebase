@@ -1,3 +1,3 @@
 export interface StateViewProps {
-    message?: string
-};
+  message?: string;
+}

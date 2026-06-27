@@ -69,7 +69,7 @@ export function RegisterForm() {
         onError: (ctx) => {
           toast.error(ctx.error.message);
         },
-      }
+      },
     );
   };
 

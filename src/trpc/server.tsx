@@ -2,7 +2,10 @@ import "server-only"; // <-- ensure this file cannot be imported from the client
 
 import { cache } from "react";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
-import { createTRPCOptionsProxy, TRPCQueryOptions } from "@trpc/tanstack-react-query";
+import {
+  createTRPCOptionsProxy,
+  TRPCQueryOptions,
+} from "@trpc/tanstack-react-query";
 
 import { createTRPCContext } from "@/trpc/init";
 import { appRouter } from "@/trpc/routers/_app";
@@ -26,13 +29,12 @@ export function prefetch<T extends ReturnType<TRPCQueryOptions<any>>>(
   queryOptions: T,
 ) {
   const queryClient = getQueryClient();
-  if (queryOptions.queryKey[1]?.type === 'infinite') {
+  if (queryOptions.queryKey[1]?.type === "infinite") {
     void queryClient.prefetchInfiniteQuery(queryOptions as any);
   } else {
     void queryClient.prefetchQuery(queryOptions);
-  };
-};
-
+  }
+}
 
 export function HydrateClient(props: { children: React.ReactNode }) {
   const queryClient = getQueryClient();
@@ -41,4 +43,4 @@ export function HydrateClient(props: { children: React.ReactNode }) {
       {props.children}
     </HydrationBoundary>
   );
-};
+}

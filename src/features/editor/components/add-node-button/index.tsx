@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { memo, useState } from "react";
 import { PlusIcon } from "lucide-react";
@@ -10,10 +10,7 @@ export const AddNodeButton = memo(() => {
   const [selectorOpen, setSelectorOpen] = useState(false);
 
   return (
-    <NodeSelector
-      open={selectorOpen}
-      onOpenChange={setSelectorOpen}
-    >
+    <NodeSelector open={selectorOpen} onOpenChange={setSelectorOpen}>
       <Button
         onClick={() => setSelectorOpen(true)}
         size="icon"
