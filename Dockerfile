@@ -14,7 +14,9 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Generate Prisma client before building
+# Prisma 7 requires DATABASE_URL to be resolvable at generate time.
+# Use a placeholder — the value is never embedded in the generated client.
+ENV DATABASE_URL="postgresql://placeholder:placeholder@localhost:5432/placeholder"
 RUN npx prisma generate
 
 ENV NEXT_TELEMETRY_DISABLED=1
