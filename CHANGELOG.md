@@ -1,3 +1,15 @@
+## [1.7.0](https://github.com/RISHII7/nodebase/compare/v1.6.0...v1.7.0) (2026-06-27)
+
+### ✨ Features
+
+* **slack:** implement Slack execution node, dialog, and executor
+* **discord:** implement Discord execution node, dialog, and executor
+* **nodes:** add Discord and Slack node types to database schema
+
+### 🐛 Bug Fixes
+
+* **executions:** securely scope credential queries by userId in AI nodes
+
 ## [1.6.0](https://github.com/RISHII7/nodebase/compare/v1.5.1...v1.6.0) (2026-06-27)
 
 ### ✨ Features
