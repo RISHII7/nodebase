@@ -1,3 +1,9 @@
+## [1.11.4](https://github.com/RISHII7/nodebase/compare/v1.11.3...v1.11.4) (2026-06-27)
+
+### 🐛 Bug Fixes
+
+* **deps:** upgrade Next.js from 15.5.4 to 16.2.9 to resolve security vulnerability ([517143d](https://github.com/RISHII7/nodebase/commit/517143d359694b822ae77c04ed582e94f5968dcc))
+
 ## [1.11.3](https://github.com/RISHII7/nodebase/compare/v1.11.2...v1.11.3) (2026-06-27)
 
 ### 🐛 Bug Fixes
